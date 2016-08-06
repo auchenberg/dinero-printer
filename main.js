@@ -2,13 +2,16 @@ const electron = require('electron')
 const menubar = require('menubar')
 const log = require('electron-log')
 const fs = require('fs')
+const path = require('path')
 
 const Printer = require('./printer')
 const Options = require('./options')
 
 const ipc = electron.ipcMain
 
-let mb = menubar()
+let mb = menubar({
+  icon: path.join(electron.app.getAppPath(), '.icons', 'IconTemplate.png')
+})
 
 mb.on('ready', () => {
   mb.tray.setContextMenu(

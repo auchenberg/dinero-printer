@@ -1,0 +1,35 @@
+{
+  "name": "dinero-printer",
+  "productName": "Dinero Printer",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "author": "Kenneth Auchenberg",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-packager ./ --platform=darwin --arch=x64 --out=out --icon=./icon.icns --overwrite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auchenberg/dinero-printer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/auchenberg/dinero-printer/issues"
+  },
+  "homepage": "https://github.com/auchenberg/dinero-printer#readme",
+  "dependencies": {
+    "dinero": "^1.0.0",
+    "electron-json-storage": "^2.0.0",
+    "electron-log": "^1.0.15",
+    "get-port": "^2.1.0",
+    "ipp-printer": "^1.0.0",
+    "menubar": "^5.1.0",
+    "moment": "^2.14.1",
+    "os-tmpdir": "^1.0.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.2.7"
+  }
+}

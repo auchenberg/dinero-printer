@@ -17,9 +17,6 @@ class DineroPrinter {
       clientId: 'dineroappios',
       clientSecret: 'VYDaSKI3jGw3eiQmbbTTNnoa9kmRLeu16Pb0Q1NW3Mc'
     })
-
-    this.apiKey = this.options.apiKey
-    this.orgId = this.options.orgId
     
     getPort().then(port => {
 
@@ -48,13 +45,16 @@ class DineroPrinter {
 
   upload(filePath, job) {
 
+      let apiKey = this.options.apiKey
+      let orgId = this.options.orgId
+
       var authenticate = () => { 
-        return this.client.auth(this.apiKey, this.apiKey)
+        return this.client.auth(apiKey, apiKey)
       }
 
       var createFile = (path) => {
         log.info('dinero.file.uploading, path=', path)
-        return this.client.files.create(this.orgId, {
+        return this.client.files.create(orgId, {
           image: fs.createReadStream(path)
         }, { 
           multipart: true
@@ -63,7 +63,7 @@ class DineroPrinter {
 
       var createVoucher = (fileId) => { 
         log.info('dinero.voucher.creating, fileId=', fileId)
-        return this.client.vouchers.purchase.create(this.orgId, {
+        return this.client.vouchers.purchase.create(orgId, {
           FileGuid: fileId,
           Notes: 'Uploaded from Dinero Printer',
           VoucherDate: moment(new Date()).format('YYYY-DD-MM')

@@ -10,16 +10,14 @@ const log = require('electron-log')
 
 class DineroPrinter {
 
-  constructor(options) {
-
+  constructor (options) {
     this.options = options
     this.client = new Dinero({
       clientId: 'dineroappios',
       clientSecret: 'VYDaSKI3jGw3eiQmbbTTNnoa9kmRLeu16Pb0Q1NW3Mc'
     })
-    
-    getPort().then(port => {
 
+    getPort().then(port => {
       this.printer = new Printer({
         name: 'Dinero Printer',
         port: port
@@ -39,51 +37,48 @@ class DineroPrinter {
 
         job.pipe(fileStream)
       })
-
     })
   }
 
-  upload(filePath, job) {
+  upload (filePath, job) {
+    let apiKey = this.options.apiKey
+    let orgId = this.options.orgId
 
-      let apiKey = this.options.apiKey
-      let orgId = this.options.orgId
+    var authenticate = () => {
+      return this.client.auth(apiKey, apiKey)
+    }
 
-      var authenticate = () => { 
-        return this.client.auth(apiKey, apiKey)
-      }
-
-      var createFile = (path) => {
-        log.info('dinero.file.uploading, path=', path)
-        return this.client.files.create(orgId, {
-          image: fs.createReadStream(path)
-        }, { 
-          multipart: true
-        })
-      }
-
-      var createVoucher = (fileId) => { 
-        log.info('dinero.voucher.creating, fileId=', fileId)
-        return this.client.vouchers.purchase.create(orgId, {
-          FileGuid: fileId,
-          Notes: 'Uploaded from Dinero Printer',
-          VoucherDate: moment(new Date()).format('YYYY-DD-MM')
-        })
-      }
-
-      authenticate()
-      .then(() => {
-        log.info('dinero.authenticated') 
-        return createFile(filePath)
-      }).then(body => { 
-        log.info('dinero.file.uploaded, id=', body.FileGuid) 
-        return createVoucher(body.FileGuid)
-      }).then(body => {
-        log.info('dinero.voucher.created, id=', body.VoucherGuid)
-        log.info('printer.job.completed, id=', job.id)
-      }).catch(err => {
-        log.info('dinero.error', err)
+    var createFile = (path) => {
+      log.info('dinero.file.uploading, path=', path)
+      return this.client.files.create(orgId, {
+        image: fs.createReadStream(path)
+      }, {
+        multipart: true
       })
+    }
 
+    var createVoucher = (fileId) => {
+      log.info('dinero.voucher.creating, fileId=', fileId)
+      return this.client.vouchers.purchase.create(orgId, {
+        FileGuid: fileId,
+        Notes: 'Uploaded from Dinero Printer',
+        VoucherDate: moment(new Date()).format('YYYY-DD-MM')
+      })
+    }
+
+    authenticate()
+    .then(() => {
+      log.info('dinero.authenticated')
+      return createFile(filePath)
+    }).then(body => {
+      log.info('dinero.file.uploaded, id=', body.FileGuid)
+      return createVoucher(body.FileGuid)
+    }).then(body => {
+      log.info('dinero.voucher.created, id=', body.VoucherGuid)
+      log.info('printer.job.completed, id=', job.id)
+    }).catch(err => {
+      log.info('dinero.error', err)
+    })
   }
 }
 

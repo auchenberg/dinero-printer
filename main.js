@@ -11,7 +11,6 @@ const ipc = electron.ipcMain
 let mb = menubar()
 
 mb.on('ready', () => {
-
   mb.tray.setContextMenu(
     electron.Menu.buildFromTemplate([{
       label: 'Preferences...',
@@ -20,7 +19,7 @@ mb.on('ready', () => {
       label: 'Quit',
       click: () => electron.app.quit()
     }])
-  );
+  )
 
   this.options = new Options()
   this.printer = new Printer(this.options)
@@ -37,10 +36,10 @@ ipc.on('getOptions', (evt) => {
 })
 
 ipc.on('getLog', (evt) => {
-  var logString = '';
+  var logString = ''
   var stream = fs.createReadStream(log.findLogPath())
 
-  stream.on('data', (chunk) => { 
+  stream.on('data', (chunk) => {
     logString += chunk
   })
 

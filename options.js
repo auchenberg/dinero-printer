@@ -2,14 +2,14 @@ const storage = require('electron-json-storage')
 
 class Options {
 
-  constructor() {
+  constructor () {
     this.properties = {}
 
     storage.get('properties', (err, value) => {
       if (err) {
         this.properties = {
           apiKey: '',
-          orgId: '',
+          orgId: ''
         }
       } else {
         this.properties = value
@@ -17,25 +17,25 @@ class Options {
     })
   }
 
-  get apiKey() {
+  get apiKey () {
     return this.properties.apiKey
   }
 
-  set apiKey(value) {
-    this.properties.apiKey = value;
+  set apiKey (value) {
+    this.properties.apiKey = value
     this.persist()
   }
 
-  get orgId() {
+  get orgId () {
     return this.properties.orgId
   }
 
-  set orgId(value) {
-    this.properties.orgId = value;
+  set orgId (value) {
+    this.properties.orgId = value
     this.persist()
   }
 
-  persist() {
+  persist () {
     storage.set('properties', this.properties)
   }
 

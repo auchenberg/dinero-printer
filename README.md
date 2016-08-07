@@ -1,5 +1,5 @@
 # dinero-printer
-Virtual printer that forwards the print jobs to Dinero Regnskab
+Virtual printer that forwards the print jobs to [Dinero Regnskab](https://dinero.dk/)
 
 [![Build Status](https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master)](https://travis-ci.org/auchenberg/dinero-printer)
 

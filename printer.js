@@ -62,7 +62,7 @@ class DineroPrinter {
       return this.client.vouchers.purchase.create(orgId, {
         FileGuid: fileId,
         Notes: 'Uploaded from Dinero Printer',
-        VoucherDate: moment(new Date()).format('YYYY-DD-MM')
+        VoucherDate: moment(new Date()).format('YYYY-MM-DD')
       })
     }
 

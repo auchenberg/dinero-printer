@@ -37,6 +37,7 @@
   <h2>Dinero Printer</h2>
   <p><label>You API key</label><input id="apiKey" onInput="updateOption(this, 'apiKey')" /></p>
   <p><label>Your org Id</label><input id="orgId" onInput="updateOption(this, 'orgId')" /></p>
+  <p><label>Auto launch at boot</label><input id="autoStartEnabled" type="checkbox" value="true" onChange="updateOption(this, 'autoStartEnabled')" /></p>
   
   <h2>Log</h2>
   <textarea id="log"></textarea>
@@ -46,12 +47,18 @@
     const ipc = electron.ipcRenderer
 
     function updateOption(elmTarget, property) {
-      ipc.send('updateOption', property, elmTarget.value)
+      var value = elmTarget.value
+      if(elmTarget.type === 'checkbox') {
+        value = (elmTarget.checked === true) ? true : false
+      }
+
+      ipc.send('updateOption', property, value)
     }
 
     ipc.on('optionsUpdated', (evt, options) => {
       document.getElementById('orgId').value = options.properties.orgId
       document.getElementById('apiKey').value = options.properties.apiKey
+      document.getElementById('autoStartEnabled').checked = options.properties.autoStartEnabled 
     })
 
     ipc.on('logUpdated', (evt, log) => {

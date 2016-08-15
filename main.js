@@ -24,7 +24,10 @@ mb.on('ready', () => {
     }])
   )
 
-  this.options = new Options()
+  this.options = new Options({
+    appName: mb.app.getName()
+  })
+
   this.printer = new Printer(this.options)
   log.info('ready')
 })

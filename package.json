@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/auchenberg/dinero-printer#readme",
   "dependencies": {
+    "auto-launch": "^3.0.0",
     "dinero": "^1.0.0",
     "electron-json-storage": "^2.0.0",
     "electron-log": "^1.0.15",

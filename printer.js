@@ -7,6 +7,7 @@ const moment = require('moment')
 const osTmpdir = require('os-tmpdir')
 const getPort = require('get-port')
 const log = require('electron-log')
+const child_process = require('child_process') 
 
 class DineroPrinter {
 
@@ -26,13 +27,24 @@ class DineroPrinter {
       this.printer.on('job', job => {
         log.info('printer.job.%d.received. name=%s', job.id, job.name)
 
-        var fileName = 'job-' + job.id + '.pdf'
+        var fileName = 'job-' + job.id + '.ps'
+        var fileNameOut = 'job-' + job.id + '.pdf'
         var filePath = path.join(osTmpdir(), fileName)
+        var filePathOut = path.join(osTmpdir(), fileNameOut)
+        
         var fileStream = fs.createWriteStream(filePath)
-
+        
         job.on('end', () => {
-          log.info('printer.job.%d.saved. file=%s', job.id, filePath)
-          this.upload(filePath, job)
+          log.info('printer.job.%d.received file=%s', job.id, filePath)
+
+          child_process.exec(`/usr/local/bin/ps2pdf ${filePath} ${filePathOut}`, (err, stdout, stderr) => {
+            if(err) {
+              log.info('printer.job.%d.failed file=%s, %s', job.id, err)
+            } else {
+              log.info('printer.job.%d.converted file=%s', job.id, filePathOut)
+              this.upload(filePathOut, job)
+            }
+          })
         })
 
         job.pipe(fileStream)

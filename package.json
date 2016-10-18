@@ -27,7 +27,7 @@
     "ipp-printer": "^1.0.0",
     "menubar": "^5.1.0",
     "moment": "^2.14.1",
-    "os-tmpdir": "^1.0.1"
+    "os-tmpdir": "^1.0.1",
   },
   "devDependencies": {
     "electron-packager": "^7.3.0",

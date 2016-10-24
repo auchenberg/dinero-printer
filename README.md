@@ -8,12 +8,22 @@ Virtual printer that forwards the print jobs to [Dinero Regnskab](https://dinero
 
 ## Getting started
 
+1. Install GhostScript
+
+```
+brew install ghostscript
+```
+
+2. Download binary from [lastest releases](https://github.com/auchenberg/dinero-printer/releases)
+
+3. Add `Dinero Printer` in OSX's `Printers & Scanners` settings by clicking `Add`
+
+4. Bam, ready to print to Dinero.
+
+## Development
+
 ```
 npm install
 npm start
-
-Add printer in OSX's `Print & Scan`.
-
-Print directly to Dinero!
 ```
 

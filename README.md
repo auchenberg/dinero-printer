@@ -4,12 +4,11 @@ Virtual printer that forwards the print jobs to [Dinero Regnskab](https://dinero
 [![Build Status](https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master)](https://travis-ci.org/auchenberg/dinero-printer)
 ![electorn](https://img.shields.io/badge/powered%20by-Electron-9feaf9.svg)
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
+![](.readme/demo.gif)
 
 ## Getting started
 
-1. Install GhostScript
+1. Install GhostScript via HomeBrew
 
 ```
 brew install ghostscript
@@ -19,7 +18,7 @@ brew install ghostscript
 
 3. Add `Dinero Printer` in OSX's `Printers & Scanners` settings by clicking `Add`
 
-4. CLick the Dinero logo in your toolbar, go to Option and enter your API key + secret.
+4. Click the Dinero logo in your toolbar, go to `Preferences` and enter your API key + organization id.
 
 5. Bam, ready to print to Dinero.
 

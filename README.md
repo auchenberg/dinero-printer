@@ -19,7 +19,9 @@ brew install ghostscript
 
 3. Add `Dinero Printer` in OSX's `Printers & Scanners` settings by clicking `Add`
 
-4. Bam, ready to print to Dinero.
+4. CLick the Dinero logo in your toolbar, go to Option and enter your API key + secret.
+
+5. Bam, ready to print to Dinero.
 
 ## Development
 

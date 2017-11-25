@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">Virtual printer that forwards the print jobs to <a href="https://dinero.dk/">Dinero Regnskab</a></h4>
+<h4 align="center">Virtual printer that forwards print jobs to <a href="https://dinero.dk/">Dinero Regnskab</a></h4>
 
 <p align="center">
   <a href="https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master"><img src="https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master" alt="Travis"></a>

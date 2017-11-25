@@ -1,8 +1,18 @@
-# dinero-printer
-Virtual printer that forwards the print jobs to [Dinero Regnskab](https://dinero.dk/)
+<h1 align="center">
+  <br>
+    <img src="https://raw.githubusercontent.com/auchenberg/dinero-printer/master/.icons/icon.png" alt="logo" width="150">
+  <br>
+  dinero-printer
+  <br>
+  <br>
+</h1>
 
-[![Build Status](https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master)](https://travis-ci.org/auchenberg/dinero-printer)
-![electorn](https://img.shields.io/badge/powered%20by-Electron-9feaf9.svg)
+<h4 align="center">Virtual printer that forwards the print jobs to <a href="https://dinero.dk/">Dinero Regnskab</a></h4>
+
+<p align="center">
+  <a href="https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master"><img src="https://travis-ci.org/auchenberg/dinero-printer.svg?branch=master" alt="Travis"></a>
+  <img src="https://img.shields.io/badge/powered%20by-Electron-9feaf9.svg" alt="Electron">
+</p>
 
 ![](.readme/demo.gif)
 

@@ -14,8 +14,8 @@ class DineroPrinter {
   constructor (options) {
     this.options = options
     this.client = new Dinero({
-      clientId: 'dineroappios',
-      clientSecret: 'VYDaSKI3jGw3eiQmbbTTNnoa9kmRLeu16Pb0Q1NW3Mc'
+      clientId: 'dineroprinter',
+      clientSecret: 'NmTAQ2SzvAj0Iv2fOjFtd2Rims0koJ9PxcakOmCVU'
     })
 
     getPort().then(port => {
